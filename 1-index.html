@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NutriBridge | Clinic Supplement Operations</title>
+  <meta name="description" content="Compliant B2B supplement sourcing operations for US clinics and wellness practices." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><div class="mark">N</div><div><strong>NutriBridge</strong><span>SUPPLY OPERATIONS</span></div></div>
+    <nav id="nav">
+      <button class="nav active" data-view="dashboard">Overview</button>
+      <button class="nav" data-view="partners">Partners <b>28</b></button>
+      <button class="nav" data-view="products">Products <b>12</b></button>
+      <button class="nav" data-view="batches">Batches <b>24</b></button>
+      <button class="nav" data-view="outreach">Outreach <b>7</b></button>
+      <button class="nav" data-view="compliance">Compliance <b class="warn">3</b></button>
+    </nav>
+    <div class="policy"><span>DSHEA guardrails active</span><small>Drug claims are blocked from approval.</small></div>
+  </aside>
+  <main>
+    <header><div><p class="eyebrow">OPERATIONS / <span id="crumb">OVERVIEW</span></p><h1 id="title">Good afternoon, Royce.</h1></div><div class="actions"><button class="ghost" id="exportBtn">Export</button><button class="primary" id="newBtn">+ New order</button><div class="avatar">RM</div></div></header>
+
+    <section id="dashboard" class="view active">
+      <div class="notice"><div><strong>3 compliance items need attention</strong><p>Two batches need current CoAs and one product claim needs review.</p></div><button data-jump="compliance">Review items →</button></div>
+      <div class="metrics">
+        <article><span>GROSS SALES · MTD</span><strong>$184,320</strong><em class="up">↑ 12.4%</em><canvas id="salesChart"></canvas></article>
+        <article><span>GROSS MARGIN</span><strong>42.8%</strong><em class="up">↑ 3.1 pts</em><canvas id="marginChart"></canvas></article>
+        <article><span>ACTIVE CLINICS</span><strong>21</strong><em class="up">+3 this month</em><canvas id="clinicChart"></canvas></article>
+        <article><span>INVENTORY VALUE</span><strong>$247,890</strong><em>31 days on hand</em><canvas id="inventoryChart"></canvas></article>
+      </div>
+      <div class="grid two">
+        <article class="panel"><div class="panel-head"><div><h2>Revenue & margin</h2><p>Last 6 months</p></div><div class="legend"><i></i> Revenue <i class="green"></i> Margin</div></div><div class="bigchart"><div class="yaxis"><span>$200k</span><span>$150k</span><span>$100k</span><span>$50k</span><span>$0</span></div><svg viewBox="0 0 620 210" preserveAspectRatio="none"><defs><linearGradient id="fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4865e8" stop-opacity=".22"/><stop offset="1" stop-color="#4865e8" stop-opacity="0"/></linearGradient></defs><path class="area" d="M0 178 L120 145 L240 158 L360 112 L480 82 L620 32 L620 210 L0 210Z"/><path class="line" d="M0 178 L120 145 L240 158 L360 112 L480 82 L620 32"/><path class="line greenline" d="M0 168 L120 162 L240 139 L360 134 L480 112 L620 97"/></svg><div class="months"><span>APR</span><span>MAY</span><span>JUN</span><span>JUL</span><span>AUG</span><span>SEP</span></div></div></article>
+        <article class="panel"><div class="panel-head"><div><h2>Inventory health</h2><p>Across 24 tracked batches</p></div><button data-jump="batches">View all</button></div><div class="stockrow"><div class="ring"><span>83%</span><small>healthy</small></div><div class="stocklegend"><p><i class="ok"></i><span>Healthy</span><b>20 batches</b></p><p><i class="low"></i><span>Low stock</span><b>3 batches</b></p><p><i class="exp"></i><span>Expiring &lt;90d</span><b>1 batch</b></p></div></div></article>
+      </div>
+      <div class="grid three">
+        <article class="panel span2"><div class="panel-head"><div><h2>Recent orders</h2><p>Current fulfillment status</p></div></div><div class="tablewrap"><table><thead><tr><th>ORDER</th><th>CLINIC</th><th>VALUE</th><th>STATUS</th><th>DATE</th></tr></thead><tbody id="ordersBody"></tbody></table></div></article>
+        <article class="panel"><div class="panel-head"><div><h2>Action queue</h2><p>Prioritized for review</p></div></div><div id="actionsList" class="tasklist"></div></article>
+      </div>
+    </section>
+
+    <section id="partners" class="view"><div class="sectionhead"><div><h2>Partner CRM</h2><p>Supplier and clinic relationships, history, preferences and value.</p></div><button class="primary">+ Add partner</button></div><div class="filters"><input id="partnerSearch" placeholder="Search organizations..."/><button class="chip active">All 28</button><button class="chip">Clinics 21</button><button class="chip">Suppliers 7</button></div><div id="partnerCards" class="cards"></div></section>
+    <section id="products" class="view"><div class="sectionhead"><div><h2>DSHEA product catalog</h2><p>Dietary ingredients only. Claims are screened before approval.</p></div><button class="primary">+ Add product</button></div><div id="productGrid" class="cards products"></div></section>
+    <section id="batches" class="view"><div class="sectionhead"><div><h2>Batch traceability</h2><p>Lot-level inventory, quality records, CoAs and expiry.</p></div><button class="primary">+ Receive batch</button></div><div class="panel tablewrap"><table><thead><tr><th>LOT</th><th>PRODUCT</th><th>SUPPLIER</th><th>AVAILABLE</th><th>EXPIRY</th><th>COA</th><th>QUALITY</th></tr></thead><tbody id="batchBody"></tbody></table></div></section>
+    <section id="outreach" class="view"><div class="sectionhead"><div><h2>Outreach review queue</h2><p>Draft-first workflow. Nothing sends without approval.</p></div><button class="primary" id="draftBtn">+ Create draft</button></div><div class="guard"><b>CAN-SPAM controls</b><span>Verified sender identity</span><span>Physical address required</span><span>One-click opt-out</span><span>Suppression list checked</span></div><div id="outreachCards" class="outreachcards"></div></section>
+    <section id="compliance" class="view"><div class="sectionhead"><div><h2>Compliance workspace</h2><p>Operational guardrails, not legal advice. Human review remains required.</p></div></div><div class="compliancegrid"><article class="panel score"><div class="ring large"><span>86</span><small>readiness</small></div><h3>Strong foundation</h3><p>3 open items across documentation and claims.</p></article><article class="panel span2"><h2>Open review items</h2><div id="complianceItems" class="reviewlist"></div></article></div><article class="panel rules"><h2>Built-in release gates</h2><div><p><b>Product category</b><span>Must be a dietary supplement or dietary ingredient under the configured policy.</span></p><p><b>Claims language</b><span>Structure/function language is allowed for review. Disease treatment, cure and prevention claims are blocked.</span></p><p><b>Quality evidence</b><span>Current lot-specific CoA, identity testing and supplier qualification are required before fulfillment.</span></p><p><b>Outreach</b><span>Draft review, truthful sender details, postal address, unsubscribe link and suppression checks are mandatory.</span></p></div></article></section>
+  </main>
+
+  <dialog id="modal"><form method="dialog"><button class="close">×</button><h2>Create order</h2><label>Clinic<select><option>Harbor Wellness Center</option><option>Summit Integrative Health</option><option>Northstar Functional Medicine</option></select></label><label>Product<select><option>Magnesium Glycinate 120 ct</option><option>L-Theanine 200 mg</option><option>Essential Amino Blend</option></select></label><label>Units<input type="number" value="48" min="1"/></label><div class="modal-note">Demo only. This prototype does not place or fulfill a real order.</div><button class="primary" value="confirm">Save demo order</button></form></dialog>
+  <div id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
